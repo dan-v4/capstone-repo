@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Window from './components/Window';
+import ProgramIcon from './components/ProgramIcon';
+import GenContent from './components/GenContent';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProgramIcon program_name={'monet.exe'} program_id={'di'} initialX = {90} initialY={85}></ProgramIcon>
+      <GenContent initialX={3} initialY={8}></GenContent>
+      <Window id={'di'} window_text={'Monet'} windowWidth={800} windowHeight={300} initialX = {2} initialY={65} closeable={true}></Window>
+      <Window id={'info'} window_text={'hi'} windowWidth={800} windowHeight={300}  initialX = {63}  initialY={6} closeable={false}></Window>
     </div>
   );
 }
