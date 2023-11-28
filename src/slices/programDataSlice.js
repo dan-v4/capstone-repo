@@ -6,6 +6,8 @@ const initialState = {
     artist_shown_di: '',
     topWindow: '',
     topZ: 12,
+    applyTransfer: false,
+    transferBusy: false,
     window_data: [
         {
             name: 'di',
@@ -57,10 +59,14 @@ export const programDataSlice = createSlice({
             state.topWindow = action.payload 
             const indexOfWindow = initialState.window_data.indexOf(initialState.window_data.find((w) => w.name === action.payload));
             state.window_data[indexOfWindow].zIndex = state.topZ 
+        },
+        setTransfer: (state, action) => {
+            state.applyTransfer = action.payload[0]
+            state.transferBusy = action.payload[1]
         }
     }
 })
 
-export const { selectBorder, deselectBorder, showWindow, hideWindow, updateTopWindow} = programDataSlice.actions
+export const { selectBorder, deselectBorder, showWindow, hideWindow, updateTopWindow, setTransfer} = programDataSlice.actions
 
 export default programDataSlice.reducer

@@ -45,6 +45,7 @@ function Window({id, content, window_text, windowWidth, windowHeight, initialX, 
             display: 'flex',
             boxSizing: 'border-box',
             position: 'relative',
+            cursor: 'grab',
             // borderStyle: 'solid solid solid solid',
             // borderColor: 'white',
             // borderWidth: '1px',
@@ -103,7 +104,7 @@ function Window({id, content, window_text, windowWidth, windowHeight, initialX, 
           position: 'absolute',
           borderStyle: 'none solid solid solid',
           borderWidth: '2px'}}>
-        
+            {content}
         </div>
       </div>
     </Draggable>

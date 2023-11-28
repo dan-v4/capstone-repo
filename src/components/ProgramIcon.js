@@ -10,16 +10,17 @@ function ProgramIcon({program_name, program_id, initialX, initialY}) {
     const dispatch = useDispatch()
     const window_name = program_id + '-window'
     const window_div = useSelector((state) => state.shower)
-    
+    const [showMenu, setShowMenu] =  useState(false)
     const mbOnClick = () => {
-
-        if(selected_button.value !== program_id){
-            dispatch(deselectBorder())
-            dispatch(showWindow(program_id))
-        }else if(selected_button.value == program_id){
-            dispatch(deselectBorder())
-            dispatch(hideWindow(program_id))
-        }
+        if (showMenu){
+            if(selected_button.value !== program_id){
+                dispatch(deselectBorder())
+                dispatch(showWindow(program_id))
+            }else if(selected_button.value == program_id){
+                dispatch(deselectBorder())
+                dispatch(hideWindow(program_id))
+            }
+        }   
     }
     const [hoverState, setHover] = useState(false) 
     
@@ -32,14 +33,15 @@ function ProgramIcon({program_name, program_id, initialX, initialY}) {
     }
   
     return (
-        <Draggable zIndex={-1} handle='.handle'>
+        <Draggable zIndex={4} handle='.handle' onDrag={() => setShowMenu(false)} >
             <div id={'button-div'} className='handle' 
                 style={{
                     position: 'absolute',
                     left: `${initialX}%`,
                     top: `${initialY}%`,
+                    zIndex: '4',
                 }}>
-                <button className={'menu-button'} onMouseEnter={setHoverTrue} onMouseLeave={setHoverFalse} onClick={mbOnClick}
+                <button className={'menu-button'} onMouseEnter={setHoverTrue} onMouseLeave={setHoverFalse} onMouseDown={() => setShowMenu(true)} onMouseUp={mbOnClick}
                 style={
                 {//display: 'block',
                 backgroundColor: hoverState ? 'rgba(51, 204, 255, 0.5)': (selected_button.value === program_id && selected_button.highlight) ? 'rgba(51, 204, 255, 0.3)' : 'transparent',
