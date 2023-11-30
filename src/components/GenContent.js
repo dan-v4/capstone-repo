@@ -21,7 +21,7 @@ function GenContent({ initialX, initialY }) {
       console.log(typeof(imageSrc))
       console.log(imageSrc.replace('data:image/webp;base64,',''))
       try{
-        const response = await fetch('https://4fa4-2607-f2c0-eeea-20-700c-898-8c0a-9a70.ngrok-free.app/predict/monet2photo_256_cut', {
+        const response = await fetch('https://4db5-2607-f2c0-eeea-20-8138-95aa-2be2-df56.ngrok-free.app/predict/monet2photo_256_cut', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
